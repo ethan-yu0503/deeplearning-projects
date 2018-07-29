@@ -3,7 +3,10 @@ from sklearn.preprocessing import MinMaxScaler
 
 # Load training data set from CSV file
 training_data_df = pd.read_csv("black_friday_training.csv")
+# Ignoring the following attributes
 training_data_df = training_data_df.drop(['User_ID', 'Product_ID', 'Product_Category_2', 'Product_Category_3'], axis=1)
+
+# Mapping string values in dataset to int values for processing purposes
 training_data_df['Gender'] = training_data_df['Gender'].map({'F': 1, 'M':0}).astype(int)
 training_data_df['City_Category'] = training_data_df['City_Category'].map({'A':1, 'B':2, 'C':3}).astype(int)
 training_data_df['Stay_In_Current_City_Years'] = training_data_df['Stay_In_Current_City_Years'].map({'0': 0, '1': 1, '2': 2, '3': 3, '4+': 4}).astype(int)
@@ -16,7 +19,7 @@ training_data_df['Age'] = training_data_df['Age'].map({'0-17': 0,
                                                        '55+': 6}
                                                       ).astype(int)
 
-# Load testing data set from CSV file
+# Load testing data set from CSV file and processing it
 testing_data_df = pd.read_csv("black_friday_testing.csv")
 testing_data_df = testing_data_df.drop(['User_ID', 'Product_ID', 'Product_Category_2', 'Product_Category_3'], axis=1)
 testing_data_df['Gender'] = testing_data_df['Gender'].map({'F': 1, 'M':0}).astype(int)
