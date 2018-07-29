@@ -1,0 +1,6 @@
+# .gitignore
+
+.idea/*.xml
+project1/logs/
+*.xml
+
