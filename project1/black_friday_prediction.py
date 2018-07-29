@@ -18,7 +18,7 @@ def create_model():
     return model
 
 
-training_data_df = pd.read_csv("black_friday_training_scaled.csv")
+training_data_df = pd.read_csv("files/black_friday_training_scaled.csv")
 
 # The model will be able to predict purchase amounts
 X = training_data_df.drop("Purchase",axis=1).values
@@ -44,7 +44,7 @@ model.fit(
 )
 
 # Initializing testing
-testing_data_df = pd.read_csv('black_friday_testing_scaled.csv')
+testing_data_df = pd.read_csv('files/black_friday_testing_scaled.csv')
 
 X_test = testing_data_df.drop('Purchase', axis=1).values
 Y_test = testing_data_df[['Purchase']].values
@@ -55,7 +55,7 @@ print("Mean Squared Error for test data is: {}".format(test_error_rate))
 
 
 # Initializing predictions
-X_predict = pd.read_csv('black_friday_prediction.csv').values
+X_predict = pd.read_csv('files/black_friday_prediction.csv').values
 
 predictions = model.predict(X_predict)
 

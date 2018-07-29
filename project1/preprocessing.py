@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
 # Load training data set from CSV file
-training_data_df = pd.read_csv("black_friday_training.csv")
+training_data_df = pd.read_csv("files/black_friday_training.csv")
 # Ignoring the following attributes
 training_data_df = training_data_df.drop(['User_ID', 'Product_ID', 'Product_Category_2', 'Product_Category_3'], axis=1)
 
@@ -20,7 +20,7 @@ training_data_df['Age'] = training_data_df['Age'].map({'0-17': 0,
                                                       ).astype(int)
 
 # Load testing data set from CSV file and processing it
-testing_data_df = pd.read_csv("black_friday_testing.csv")
+testing_data_df = pd.read_csv("files/black_friday_testing.csv")
 testing_data_df = testing_data_df.drop(['User_ID', 'Product_ID', 'Product_Category_2', 'Product_Category_3'], axis=1)
 testing_data_df['Gender'] = testing_data_df['Gender'].map({'F': 1, 'M':0}).astype(int)
 testing_data_df['City_Category'] = testing_data_df['City_Category'].map({'A':1, 'B':2, 'C':3}).astype(int)
@@ -50,5 +50,5 @@ scaled_training_df = pd.DataFrame(scaled_training, columns=training_data_df.colu
 scaled_testing_df = pd.DataFrame(scaled_testing, columns=testing_data_df.columns.values)
 
 # Save scaled data dataframes to new CSV files
-scaled_training_df.to_csv("black_friday_training_scaled.csv", index=False)
-scaled_testing_df.to_csv("black_friday_testing_scaled.csv", index=False)
+scaled_training_df.to_csv("files/black_friday_training_scaled.csv", index=False)
+scaled_testing_df.to_csv("files/black_friday_testing_scaled.csv", index=False)
